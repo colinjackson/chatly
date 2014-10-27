@@ -10,6 +10,7 @@ $.ChatUI = function (el, socket) {
 
 $.ChatUI.prototype.bindEvents = function () {
   this.$messageForm.on('submit', this.handleSubmit.bind(this));
+  this.$messageForm.on('keypress', this.handleKeypress.bind(this));
 };
 
 $.ChatUI.prototype.handleSubmit = function (event) {
@@ -22,6 +23,12 @@ $.ChatUI.prototype.handleSubmit = function (event) {
     this.chat.processCommand(text);
   } else {
     this.chat.sendMessage(text);
+  }
+};
+
+$.ChatUI.prototype.handleKeypress = function (event) {
+  if (event.which === 13) {
+    this.handleSubmit(event)
   }
 };
 
