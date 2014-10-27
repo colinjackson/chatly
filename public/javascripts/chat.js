@@ -1,8 +1,8 @@
-$.Chat = function (socket, messagesList, usersList) {
+$.Chat = function (socket, messagesList, roomsList) {
   this.socket = socket;
   this.room = 'lobby';
   this.$messagesList = $(messagesList);
-  this.$usersList = $(usersList);
+  this.$roomsList = $(roomsList);
 
   this.bindEvents();
 };
@@ -13,20 +13,33 @@ $.Chat.prototype.bindEvents = function () {
     this.addMessage(data.text);
   }.bind(this));
 
-  this.socket.on('nicknameChangeResult', function (data) {
-    this.$usersList.empty();
-
-    for (var i = 0; i < data.nicksArray.length; i++) {
-      var $li = $('<li>');
-      $li.text(data.nicksArray[i]);
-      this.$usersList.append($li);
-    }
-  }.bind(this));
-
   this.socket.on('roomChangeResult', function (data) {
     console.log(data);
     this.room = data.newRoom;
   }.bind(this));
+
+  this.socket.on('roomListUpdate', function (data) {
+    this.updateRoomList(data.roomOccupants);
+  }.bind(this));
+};
+
+$.Chat.prototype.updateRoomList = function (roomOccupants) {
+  this.$roomsList.empty();
+
+  for (var room in roomOccupants) {
+    var $roomItem = $('<li>');
+    $roomItem.text(room).append($('<ul>'));
+    $roomItemList = $roomItem.find('ul');
+
+    var occupants = roomOccupants[room];
+    for (var i = 0; i < occupants.length; i++) {
+      var $occupantItem = $('<li>');
+      $occupantItem.text(occupants[i]);
+      $roomItemList.append($occupantItem);
+    }
+
+    this.$roomsList.append($roomItem);
+  }
 };
 
 $.Chat.prototype.addMessage = function (text) {

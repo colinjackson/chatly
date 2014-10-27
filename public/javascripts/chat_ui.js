@@ -2,8 +2,8 @@ $.ChatUI = function (el, socket) {
   this.$el = $(el);
   this.$messageForm = this.$el.find('#new-message > form');
   this.$messagesList = this.$el.find('#messages > ul');
-  this.$usersList = this.$el.find('#users > ul');
-  this.chat = new $.Chat(socket, this.$messagesList, this.$usersList);
+  this.$roomsList = this.$el.find('#rooms > ul');
+  this.chat = new $.Chat(socket, this.$messagesList, this.$roomsList);
 
   this.bindEvents();
 };
