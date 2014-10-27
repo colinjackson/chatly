@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Chatly!</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="javascripts/chat.js"></script>
+  <script src="javascripts/chat_ui.js"></script>
+</head>
+<body>
+  <div id="chat-ui">
+    <div id="new-message">
+      <form>
+        <textarea name="message[text]"></textarea>
+        <button>Send</button>
+      </form>
+    </div>
+    <div id="messages">
+      <ul></ul>
+    </div>
+  </div>
+</body>
+</html>
