@@ -1,5 +1,6 @@
 $.Chat = function (socket, messagesList, usersList) {
   this.socket = socket;
+  this.room = 'lobby';
   this.$messagesList = $(messagesList);
   this.$usersList = $(usersList);
 
@@ -21,6 +22,11 @@ $.Chat.prototype.bindEvents = function () {
       this.$usersList.append($li);
     }
   }.bind(this));
+
+  this.socket.on('roomChangeResult', function (data) {
+    console.log(data);
+    this.room = data.newRoom;
+  }.bind(this));
 };
 
 $.Chat.prototype.addMessage = function (text) {
@@ -30,14 +36,15 @@ $.Chat.prototype.addMessage = function (text) {
 };
 
 $.Chat.prototype.sendMessage = function (text) {
-  this.socket.emit('message', { text: text });
+  this.socket.emit('message', { text: text, room: this.room });
 };
 
 $.Chat.prototype.processCommand = function (text) {
   var args = text.substring(1).split(/\s+/);
-  console.log(args);
   if (args[0] === 'nick') {
     this.sendNicknameChangeRequest(args[1]);
+  } else if (args[0] === 'join') {
+    this.sendRoomChangeRequest(args[1]);
   } else {
     var $li = $('<li>');
     $li.text('[Invalid command!]');
@@ -47,4 +54,8 @@ $.Chat.prototype.processCommand = function (text) {
 
 $.Chat.prototype.sendNicknameChangeRequest = function (proposedNick) {
   this.socket.emit('nicknameChangeRequest', { proposedNick: proposedNick });
+};
+
+$.Chat.prototype.sendRoomChangeRequest = function (newRoom) {
+  this.socket.emit('roomChangeRequest', { newRoom: newRoom });
 };

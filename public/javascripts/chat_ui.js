@@ -28,7 +28,7 @@ $.ChatUI.prototype.handleSubmit = function (event) {
 
 $.ChatUI.prototype.handleKeypress = function (event) {
   if (event.which === 13) {
-    this.handleSubmit(event)
+    this.handleSubmit(event);
   }
 };
 
