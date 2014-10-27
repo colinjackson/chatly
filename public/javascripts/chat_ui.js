@@ -2,7 +2,8 @@ $.ChatUI = function (el, socket) {
   this.$el = $(el);
   this.$messageForm = this.$el.find('#new-message > form');
   this.$messagesList = this.$el.find('#messages > ul');
-  this.chat = new $.Chat(socket, this.$messagesList);
+  this.$usersList = this.$el.find('#users > ul');
+  this.chat = new $.Chat(socket, this.$messagesList, this.$usersList);
 
   this.bindEvents();
 };
@@ -16,7 +17,12 @@ $.ChatUI.prototype.handleSubmit = function (event) {
 
   var $form = $(event.currentTarget);
   var text = this.getMessage($form);
-  this.chat.sendMessage(text);
+
+  if (text[0] === '/') {
+    this.chat.processCommand(text);
+  } else {
+    this.chat.sendMessage(text);
+  }
 };
 
 $.ChatUI.prototype.getMessage = function ($form) {
