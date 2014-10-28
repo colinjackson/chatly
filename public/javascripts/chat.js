@@ -66,7 +66,10 @@ $.Chat.prototype.processCommand = function (text) {
 };
 
 $.Chat.prototype.sendNicknameChangeRequest = function (proposedNick) {
-  this.socket.emit('nicknameChangeRequest', { proposedNick: proposedNick });
+  this.socket.emit('nicknameChangeRequest', {
+    proposedNick: proposedNick,
+    room: this.room
+  });
 };
 
 $.Chat.prototype.sendRoomChangeRequest = function (newRoom) {

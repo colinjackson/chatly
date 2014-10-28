@@ -1,0 +1,167 @@
+/* CSS RESET */
+
+html, body, h1, div, form, textarea, button, ul, li {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+textarea, input, button {
+  outline: none;
+  resize: none;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+
+/* STYLES */
+
+div#content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+h1 {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2.75em;
+  height: 50px;
+  font-weight: bold;
+  color: white;
+  padding: 10px 0;
+  background: #FF5555;
+}
+
+div#chat-ui {
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+div#content-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 70%;
+  background: grey;
+}
+
+div#content-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 30%;
+  right: 0;
+  background: darkslategrey;
+}
+
+div#new-message {
+  position: absolute;
+  top: 0;
+  bottom: 60%;
+  left: 0;
+  right: 0;
+}
+
+div#rooms {
+  position: absolute;
+  top: 40%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+div#new-message > form {
+  position: absolute;
+  padding: 10px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+div#new-message textarea {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 85%;
+  padding: 16px;
+  background: lightgrey;
+  border-radius: 5px;
+}
+
+div#new-message button {
+  display: block;
+  position: relative;
+  text-align: center;
+  background: #33AA33;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3em;
+  box-shadow: 0 4px 0 0 #119911;
+  width: 100%;
+  height: 20%;
+  top: -16px;
+  border-radius: 5px;
+}
+
+div#rooms > ul {
+  position: absolute;
+  margin: 0 10px 10px 10px;
+  padding: 16px 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+  background: black;
+}
+
+div#rooms > ul > li {
+  display: block;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: lightgreen;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+div#rooms > ul > li > ul {
+  width: 100%;
+  padding: 5px;
+}
+
+div#rooms > ul > li > ul > li {
+  display: block;
+  float: left;
+  background: grey;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+div#rooms > ul > li > ul:after {
+  display: block;
+  content: "";
+  clear: both;
+}

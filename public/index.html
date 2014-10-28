@@ -7,20 +7,28 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="javascripts/chat.js"></script>
   <script src="javascripts/chat_ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/app.css">
 </head>
 <body>
-  <div id="chat-ui">
-    <div id="new-message">
-      <form>
-        <textarea name="message[text]"></textarea>
-        <button>Send</button>
-      </form>
-    </div>
-    <div id="rooms">
-      <ul></ul>
-    </div>
-    <div id="messages">
-      <ul></ul>
+  <div id="content">
+    <h1>Chatly!</h1>
+    <div id="chat-ui">
+      <div id="content-left">
+        <div id="new-message">
+          <form>
+            <textarea name="message[text]"></textarea>
+            <button>Send</button>
+          </form>
+        </div>
+        <div id="rooms">
+          <ul></ul>
+        </div>
+      </div>
+      <div id="content-right">
+        <div id="messages">
+          <ul></ul>
+        </div>
+      </div>
     </div>
   </div>
 </body>
