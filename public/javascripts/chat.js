@@ -44,7 +44,9 @@ $.Chat.prototype.updateRoomList = function (roomOccupants) {
 
 $.Chat.prototype.addMessage = function (text) {
   var $li = $('<li>');
-  $li.text(text);
+  var $span = $('<span>');
+  $span.text(text);
+  $li.append($span);
   this.$messagesList.prepend($li);
 };
 

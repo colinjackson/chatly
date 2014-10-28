@@ -74,18 +74,13 @@ div#content-right {
   background: darkslategrey;
 }
 
+
+/* NEW MESSAGE STYLES */
+
 div#new-message {
   position: absolute;
   top: 0;
   bottom: 60%;
-  left: 0;
-  right: 0;
-}
-
-div#rooms {
-  position: absolute;
-  top: 40%;
-  bottom: 0;
   left: 0;
   right: 0;
 }
@@ -123,6 +118,17 @@ div#new-message button {
   height: 20%;
   top: -16px;
   border-radius: 5px;
+}
+
+
+/* ROOMS STYLES */
+
+div#rooms {
+  position: absolute;
+  top: 40%;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 div#rooms > ul {
@@ -164,4 +170,28 @@ div#rooms > ul > li > ul:after {
   display: block;
   content: "";
   clear: both;
+}
+
+
+/* MESSAGES STYLES */
+
+div#messages {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+div#messages li {
+  margin: 16px;
+  text-align: center;
+}
+
+div#messages li > span {
+  border: 1px solid grey;
+  padding: 4px;
+  border-radius: 5px;
+  color: white;
+  background: teal;
 }
